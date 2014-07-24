@@ -1,0 +1,32 @@
+<ul class="nav navbar-nav m-n hidden-xs nav-user user">
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+      <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+        <%= image_tag avatar_url(current_user) %>
+      </span>
+      <%= current_user.full_name %> <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu animated ">            
+      <li>
+        <span class="arrow top"></span>
+        <%= link_to "Settings", edit_user_registration_path %>
+      </li>
+      <li>
+        <a href="profile.html">Profile</a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="badge bg-danger pull-right">3</span>
+          Notifications
+        </a>
+      </li>
+      <li>
+        <a href="docs.html">Help</a>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      </li>
+    </ul>
+  </li>
+</ul>

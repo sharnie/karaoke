@@ -1,0 +1,40 @@
+<section id="content">
+  <section class="vbox">
+    <section class="scrollable wrapper-lg">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="panel">
+            <!-- video player -->
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/v/<%= @video.unique_id %>?version=3&autoplay=1&f=videos&iv_load_policy=3&app=youtube_gdata"></iframe>
+            </div>
+            <!-- / video player -->
+            <div class="wrapper-lg">
+              <h2 class="m-t-none text-black"><%= @video.title %></h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">Related videos</div>
+            <div class="panel-body">
+              <% @video.related.videos.take(7).each do |video| %>
+                <article class="media">
+                  <a href="/video?watch=<%= video.unique_id %>" class="pull-left thumb-lg m-t-xs">
+                    <%= image_tag video.thumbnails[1].url %>
+                  </a>
+                  <div class="media-body">                        
+                    <a href="/video?watch=<%= video.unique_id %>" class="font-semibold"><%= video.title %></a>
+                    <div class="text-xs block m-t-xs"><a href="#">Travel</a> 2 minutes ago</div>
+                  </div>
+                </article>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+  <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+</section>
