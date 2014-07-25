@@ -95,12 +95,12 @@ $(document).on('page:change', function(){
 
 
   // add video to playlist
-  search_results.on('click', '.add-to-playlist', function(ev){
+  search_results.on('click', '.result-item', function(ev){
     ev.preventDefault();
 
     // send request to server to add video
 
-    var video_li = $(this).closest('li'),
+    var video_li = $(this),
         video_id = video_li.data('id'),
         title    = video_li.find('.playlist-video-title').html(),
         image_url= video_li.find('.playlist-video-image').attr('src');
@@ -120,9 +120,5 @@ $(document).on('page:change', function(){
     return false;
   });
 
-
-  window.onbeforeunload = function() {
-    return "You're currently playing music, reloading the page will reset all changes.";
-  };
 
 });

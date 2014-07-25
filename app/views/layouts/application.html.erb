@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="app">
 <head>
   <title>Karaoke</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -7,16 +7,18 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
-
-  <%= render 'shared/navbar/navbar' %>
-
-  <section>
+  
+  <section class="vbox">
+    <%= render 'shared/navbar/navbar' %>
     <%= render 'shared/flash' %>
 
-    <section class="hbox stretch">
-      <%= render 'shared/navbar/navbar_side' %>
-      <%= yield %>
+    <section>
+      <section class="hbox stretch">
+        <%= render 'shared/navbar/navbar_side' unless exclude_nav? %>
+        <%= yield %>
+      </section><!-- hbox stretch -->
     </section>
+
   </section>
 
 </body>

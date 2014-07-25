@@ -1,10 +1,17 @@
 .vbox {
   display: block !important;
 }
+.alert {
+  margin-bottom: 0px;
+  border-radius: 0px;
+}
 #search-results .added-to-list, #search-results .added-to-list:hover {
   background-color: #2C3942 !important;
   color: #fff;
 }
 #search-results .list-group-item {
   border-radius: 0px !important;
+}
+#search-results .result-item {
+  cursor: pointer;
 }

@@ -9,7 +9,9 @@ module ApplicationHelper
   end
 
   def exclude_nav?
-    black_list = [new_user_registration_path]
+    black_list = [new_user_registration_path,
+                  edit_user_registration_path,
+                  new_user_session_path]
 
     black_list.any? do |url|
       current_page?(url)
