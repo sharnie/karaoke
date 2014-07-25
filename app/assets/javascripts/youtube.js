@@ -6,18 +6,44 @@ $(document).on('page:change', function(){
       search_results        = $('#search-results');
 
   var YouTube = {
-    changeVideo: function(unique_id) {
+    changeVideo: function(video_id) {
 
-      now_playing_video.fadeOut(400, function() {
         now_playing_container.html('');
+      now_playing_video.fadeOut(400, function() {
 
-        $('<iframe>', {
-           src: 'https://www.youtube.com/v/'+ unique_id +'?version=3&f=videos&autoplay=1&iv_load_policy=3',
-           id:  'now-playing-video',
-           frameborder: 0,
-           scrolling: 'no'
-        }).appendTo(now_playing_container);
+        // $('<iframe>', {
+        //    src: 'https://www.youtube.com/v/'+ video_id +'?version=3&f=videos&autoplay=1&iv_load_policy=3',
+        //    id:  'now-playing-video',
+        //    frameborder: 0,
+        //    scrolling: 'no'
+        // }).appendTo(now_playing_container);
+
+
+
+        // console.log(video);
+        // console.log('fired');
+
       });
+
+        var video = $("<object />", {
+            id: "now-playing-video",
+            class: "embed-responsive-item",
+        }).append($('<params />', {
+              name: "movie",
+              value: '//www.youtube.com/v/'+ video_id +'?hl=en_US&amp;version=3&amp;rel=0&autoplay=1',
+        })).append($('<params />', {
+              name: "allowFullScreen",
+              value: "true",
+        })).append($('<params />', {
+              name: "allowscriptaccess",
+              value: "always",
+        })).append($('<embed />', {
+              name: "movie",
+              type: "application/x-shockwave-flash",
+              src: '//www.youtube.com/v/'+ video_id +'?hl=en_US&amp;version=3&amp;rel=0&autoplay=1',
+              allowscriptaccess: "always",
+              allowfullscreen: "true",
+        })).appendTo(now_playing_container);
 
     },
     addVideoToPlaylist: function(title, image_url, video_id) {
