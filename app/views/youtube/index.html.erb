@@ -3,7 +3,7 @@
 
     <section class="w-f-md">
       <section class="hbox stretch bg-black dker">
-        <!-- left -->
+        <!-- video and playlist // left -->
         <aside class="col-sm-7 no-padder" id="sidebar">
           <section class="vbox animated fadeInUp">
             <section class="scrollable">
@@ -16,47 +16,10 @@
           </section>
         </aside>
 
-        <!-- middle -->
-        <section class="col-sm-3 no-padder bg">
-          <section class="vbox">
-            <section class="scrollable hover">
-              <ul id="search-results" class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
+        <!-- search-result // middle -->
+        <%= render 'youtube/widget/search_result' %>
 
-                <li class="list-group-item clearfix">
-                  <!-- search form -->
-                  <form method="get" action="/" class="m-l-n-xs hidden-xs" role="search">
-                    <div class="input-group">
-                      <span class="input-group-btn">
-                        <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
-                      </span>
-                      <input type="text" name="q" class="form-control input-sm no-border rounded" placeholder="Search songs, albums...">
-                    </div>
-                  </form>
-
-                </li>
-
-                <!-- search results -->
-                <% @youtube.videos.take(15).each do |video| %>
-                  <%= content_tag :li, class: "list-group-item clearfix result-item", data: { id: video.unique_id } do %>
-                    <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md add-to-playlist">
-                      <i class="fa fa-plus-circle text "></i>
-                    </a>
-                    <a href="#" class="pull-left thumb-md m-r">
-                      <%= image_tag video.thumbnails[2].url, class: "playlist-video-image" %>
-                    </a>
-                    <a class="clear" href="#">
-                      <span class="block text-ellipsis playlist-video-title"><%= video.title.titleize %></span>
-                      <small class="text-muted"><%= video.view_count %></small>
-                    </a>
-                  <% end %>
-                <% end %>
-
-              </ul>
-            </section>
-          </section>
-        </section>
-
-        <!-- right -->
+        <!-- adsense // right -->
         <section class="col-sm-2 no-padder lt">
           <section class="vbox">
             <section class="scrollable hover">

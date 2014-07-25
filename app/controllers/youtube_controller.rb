@@ -3,16 +3,21 @@ class YoutubeController < ApplicationController
 
   def index
     search_query = params[:q] || "top music 2014 lyrics"
-    @youtube     = yt_client.videos_by(:query => "#{search_query} lyrics")
+    @youtube     = search_videos(search_query)
   end
 
-  # def index
-  #   result  = yt_client.videos_by(query: params[:q])
-  #   respond_with result
-  # end
+  def videos
+    respond_with search_videos(params[:q])
+  end
 
   def show
-    video    = params[:watch] || "FQK1URcxmb4"
-    @video   = yt_client.video_by(video)
+    video  = params[:watch] || "FQK1URcxmb4"
+    @video = yt_client.video_by(video)
+  end
+
+private
+
+  def search_videos query
+    yt_client.videos_by(query: "#{query} lyrics")
   end
 end

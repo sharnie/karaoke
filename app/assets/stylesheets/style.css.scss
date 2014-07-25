@@ -1,3 +1,10 @@
 .vbox {
   display: block !important;
 }
+#search-results .added-to-list, #search-results .added-to-list:hover {
+  background-color: #2C3942 !important;
+  color: #fff;
+}
+#search-results .list-group-item {
+  border-radius: 0px !important;
+}

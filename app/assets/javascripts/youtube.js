@@ -21,7 +21,8 @@ $(document).on('page:change', function(){
 
     },
     addVideoToPlaylist: function(title, image_url, video_id) {
-      var li = [
+
+      playlist.append([
         '<li class="list-group-item playlist-video" data-id="'+ video_id +'">',
           '<div class="pull-right m-l">',
             '<a href="#" class="remove-icon"><i class="icon-close"></i></a>',
@@ -33,11 +34,54 @@ $(document).on('page:change', function(){
             '<span>'+ title +'</span>',
           '</div>',
         '</li>',
-      ];
+      ].join("\n"));
 
-      playlist.append(li.join("\n"));
+    },
+    getVideos: function(query) {
+      $.getJSON('/videos.json', {q: query}, function(response){
+        YouTube.updateSearchResult(response.videos);
+      });
+    },
+    updateSearchResult: function(new_videos) {
+      var items = $('#search-results li'),
+          video_li;
+
+      $.each(items, function(index, item) {
+        item.remove();
+      });
+
+      $.each(new_videos, function(index, video){
+
+        search_results.append([
+          '<li class="list-group-item clearfix result-item" data-id="'+ video.unique_id +'">',
+            '<a href="#" class="jp-play-me pull-right m-t-sm m-l text-md add-to-playlist">',
+              '<i class="fa fa-plus-circle text "></i>',
+            '</a>',
+            '<a href="#" class="pull-left thumb-md m-r">',
+              '<img src="'+ video.thumbnails[2].url +'" class="playlist-video-image" />',
+            '</a>',
+            '<span class="clear">',
+              '<span class="block text-ellipsis playlist-video-title">'+ video.title +'</span>',
+              '<small class="text-muted">'+ video.view_count +'</small>',
+            '</span>',
+          '</li>',
+        ].join("\n"));
+
+      });
     }
   }
+
+  // video search form
+  var video_search_form = $('#video-search-form'), query;
+
+  video_search_form.on('submit', function(ev){
+    ev.preventDefault();
+
+    query = $(this).find('#video-query').val();
+
+    YouTube.getVideos(query);
+  });
+
 
   // change now playing video
   playlist.on('click', '.playlist-video', function(ev){
@@ -48,6 +92,7 @@ $(document).on('page:change', function(){
 
     YouTube.changeVideo(video_id);
   });
+
 
   // add video to playlist
   search_results.on('click', '.add-to-playlist', function(ev){
@@ -60,8 +105,10 @@ $(document).on('page:change', function(){
         title    = video_li.find('.playlist-video-title').html(),
         image_url= video_li.find('.playlist-video-image').attr('src');
 
+    video_li.addClass('added-to-list');
     YouTube.addVideoToPlaylist(title, image_url, video_id);
   });
+
 
   // remove video from playlist
   playlist.on('click', '.remove-icon', function(ev){
@@ -72,4 +119,10 @@ $(document).on('page:change', function(){
     $(this).closest('.playlist-video').fadeOut(600).remove();
     return false;
   });
+
+
+  window.onbeforeunload = function() {
+    return "You're currently playing music, reloading the page will reset all changes.";
+  };
+
 });
