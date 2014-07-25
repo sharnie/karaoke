@@ -1,12 +1,20 @@
-<h2>Forgot your password?</h2>
+<section id="content" class="m-t-lg wrapper-md animated fadeInUp">    
+  <div class="container aside-xl">
+    <a class="navbar-brand block" href="index.html"><span class="h1 font-bold">Musik</span></a>
+    <section class="m-b-lg">
+      <header class="wrapper text-center">
+        <strong>Reset your password</strong>
+      </header>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+      <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <div class="form-group">
+          <%= f.email_field :email, class: "form-control rounded input-lg text-center no-border", placeholder: "Email", autofocus: true %>
+        </div>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+        <%= f.submit "Change password", class: "btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded" %>
+      <% end %>
+    </section>
+  </div>
+</section>

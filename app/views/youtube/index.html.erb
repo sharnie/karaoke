@@ -1,0 +1,122 @@
+<section id="content">
+  <section class="vbox">
+
+    <section class="w-f-md">
+      <section class="hbox stretch bg-black dker">
+        <!-- left -->
+        <aside class="col-sm-7 no-padder" id="sidebar">
+          <section class="vbox animated fadeInUp">
+            <section class="scrollable">
+
+              <%= render 'youtube/widget/now_playing_video' %>
+
+              <%= render 'youtube/widget/playlist' %>
+
+            </section>
+          </section>
+        </aside>
+
+        <!-- middle -->
+        <section class="col-sm-3 no-padder bg">
+          <section class="vbox">
+            <section class="scrollable hover">
+              <ul id="search-results" class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
+
+                <li class="list-group-item clearfix">
+                  <!-- search form -->
+                  <form method="get" action="/" class="m-l-n-xs hidden-xs" role="search">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+                      </span>
+                      <input type="text" name="q" class="form-control input-sm no-border rounded" placeholder="Search songs, albums...">
+                    </div>
+                  </form>
+
+                </li>
+
+                <!-- search results -->
+                <% @youtube.videos.take(15).each do |video| %>
+                  <%= content_tag :li, class: "list-group-item clearfix result-item", data: { id: video.unique_id } do %>
+                    <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md add-to-playlist">
+                      <i class="fa fa-plus-circle text "></i>
+                    </a>
+                    <a href="#" class="pull-left thumb-md m-r">
+                      <%= image_tag video.thumbnails[2].url, class: "playlist-video-image" %>
+                    </a>
+                    <a class="clear" href="#">
+                      <span class="block text-ellipsis playlist-video-title"><%= video.title.titleize %></span>
+                      <small class="text-muted"><%= video.view_count %></small>
+                    </a>
+                  <% end %>
+                <% end %>
+
+              </ul>
+            </section>
+          </section>
+        </section>
+
+        <!-- right -->
+        <section class="col-sm-2 no-padder lt">
+          <section class="vbox">
+            <section class="scrollable hover">
+              <div class="m-t-n-xxs">
+                <div class="item pos-rlt">
+                  <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                    <span class="block h3 font-bold text-info">Find</span>
+                    <span class="text-muted">Search the music you like</span>
+                    <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                  </a>
+                  <a href="#">
+                    <img class="img-full" src="http://flatfull.com/themes/musik/images/m43.jpg" alt="...">
+                  </a>
+                </div>
+                <div class="item pos-rlt">
+                  <a href="#" class="item-overlay active opacity wrapper-md font-xs text-right">
+                    <span class="block h3 font-bold text-warning text-u-c">Listen</span>
+                    <span class="text-muted">Find the peace in your heart</span>
+                    <span class="bottom wrapper-md block"><i class="icon-arrow-right i-lg pull-left"></i> -</span>
+                  </a>
+                  <a href="#">
+                    <img class="img-full" src="http://flatfull.com/themes/musik/images/m43.jpg" alt="...">
+                  </a>
+                </div>
+                <div class="item pos-rlt">
+                  <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                    <span class="block h3 font-bold text-success text-u-c">Share</span>
+                    <span class="text-muted">Share the good songs with your loves</span>
+                    <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                  </a>
+                  <a href="#">
+                    <img class="img-full" src="http://flatfull.com/themes/musik/images/m43.jpg" alt="...">
+                  </a>
+                </div>
+                <div class="item pos-rlt">
+                  <a href="#" class="item-overlay active opacity wrapper-md font-xs text-right">
+                    <span class="block h3 font-bold text-white text-u-c">2014</span>
+                    <span class="text-muted">Find, Listen & Share</span>
+                    <span class="bottom wrapper-md block"><i class="icon-arrow-right i-lg pull-left"></i> -</span>
+                  </a>
+                  <a href="#">
+                    <img class="img-full" src="http://flatfull.com/themes/musik/images/m43.jpg" alt="...">
+                  </a>
+                </div>
+                <div class="item pos-rlt">
+                  <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                    <span class="block h3 font-bold text-danger-lter text-u-c">Top10</span>
+                    <span class="text-muted">Selected songs</span>
+                    <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                  </a>
+                  <a href="#">
+                    <img class="img-full" src="http://flatfull.com/themes/musik/images/m43.jpg" alt="...">
+                  </a>
+                </div>
+              </div>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+
+  </section><!-- vbox -->
+</section>

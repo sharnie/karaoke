@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require_tree .
+//= require theme/app
+//= require theme/slimscroll/jquery.slimscroll.min.js
+//= require theme/app.plugin
+//= require youtube

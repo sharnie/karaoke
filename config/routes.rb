@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'home#index'
+  root 'youtube#index'
 
   get  '/videos' => 'youtube#index'
   get  '/video'  => 'youtube#show'

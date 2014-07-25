@@ -3,8 +3,8 @@
 <head>
   <title>Karaoke</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
 
@@ -14,10 +14,9 @@
     <%= render 'shared/flash' %>
 
     <section class="hbox stretch">
+      <%= render 'shared/navbar/navbar_side' %>
       <%= yield %>
     </section>
-
-    <%= render 'shared/footer' %>
   </section>
 
 </body>
