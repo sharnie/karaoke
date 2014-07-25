@@ -1,6 +1,6 @@
 <ul id="playlist" class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
 
-  <% @youtube.videos.take(2).each do |video| %>
+  <% @youtube.videos.take(0).each do |video| %>
     <%= content_tag :li, class: "list-group-item playlist-video", data: { id: video.unique_id } do %>
       <div class="pull-right m-l">
         <a href="#" class="remove-icon"><i class="icon-close"></i></a>
