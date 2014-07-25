@@ -1,0 +1,82 @@
+<section id="content">
+  <section class="vbox">
+
+    <section class="w-f-md">
+      <section class="hbox stretch bg-black dker">
+        <!-- video and playlist // left -->
+        <aside class="col-sm-7 no-padder" id="sidebar">
+          <section class="vbox animated fadeInUp">
+              <section class="scrollable hover">
+
+
+                <div class="m-t-n-xxs item pos-rlt">
+                  <div id="now-playing" class="embed-responsive embed-responsive-16by9">
+
+                    <object width="640" height="360">
+                      <param name="movie" value="//www.youtube.com/v/<%=  %>?hl=en_US&amp;version=3&amp;rel=0"></param>
+                      <param name="allowFullScreen" value="true"></param>
+                      <param name="allowscriptaccess" value="always"></param>
+                      <embed src="//www.youtube.com/v/<%= %>?hl=en_US&amp;version=3&amp;rel=0" type="application/x-shockwave-flash" width="640" height="360" allowscriptaccess="always" allowfullscreen="true"></embed>
+                    </object>
+
+                  </div>
+                </div>
+
+                <ul id="playlist" class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+
+                  <% @playlist.videos.each do |video| %>
+                    <%= content_tag :li, class: "list-group-item playlist-video", data: { id: video.unique_id } do %>
+                      <div class="pull-right m-l">
+                        <a href="#" class="remove-icon"><i class="icon-close"></i></a>
+                      </div>
+                      <span href="#" class="jp-play-me m-r-sm pull-left">
+                        <%= image_tag video.image_url, class: "thumb-xs" %>
+                      </span>
+                      <div class="clear text-ellipsis">
+                        <span><%= video.name.titleize %></span>
+                      </div>
+                    <% end %>
+                  <% end %>
+
+                </ul>
+
+
+              </section><!-- scrollable -->
+          </section>
+        </aside>
+
+        <!-- search-result // middle -->
+        <section class="col-sm-3 no-padder bg">
+          <section class="vbox">
+            <section class="scrollable hover">
+              <ul id="search-results" class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
+
+                <div class="list-group-item clearfix">
+                  <!-- search form -->
+                  <form method="get" action="/" class="m-l-n-xs hidden-xs" id="video-search-form" role="search">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+                      </span>
+                      <input type="text" id="video-query" name="q" class="form-control input-sm no-border rounded" placeholder="Search songs, albums..." autocomplete="off">
+                    </div>
+                  </form>
+
+                </div>
+
+                <!-- search results -->
+
+
+              </ul>
+            </section>
+          </section>
+        </section>
+
+        <!-- adsense // right -->
+        
+      </section>
+    </section>
+    
+    <%= render 'youtube/widget/control_bar' %>
+  </section><!-- vbox -->
+</section>

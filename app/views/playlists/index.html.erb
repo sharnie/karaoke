@@ -1,0 +1,41 @@
+<section id="content">
+  <section class="vbox">
+    <section class="scrollable wrapper">
+      <section class="row">
+        <section class="col-sm-offset-3 col-sm-6 col-md-6">
+
+              <section class="panel panel-info">
+                <header class="panel-heading bg-light no-border">
+                  <div class="clearfix">
+                    <a href="#" class="pull-left thumb-md avatar b-3x m-r">
+                      <%= image_tag avatar_url(current_user) %>
+                    </a>
+                    <div class="clear">
+                      <div class="h3 m-t-xs m-b-xs">
+                        <%= current_user.full_name %>
+                        <i class="fa fa-circle text-success pull-right text-xs m-t-sm"></i>
+                      </div>
+                      <small class="text-muted">All Playlists</small>
+                    </div>
+                  </div>
+                </header>
+
+                <div class="list-group no-radius alt">
+                  <% @playlists.each do |playlist| %>
+
+                    <%= link_to playlist_path(playlist), class: "list-group-item" do %>
+                      <span class="badge bg-success">25</span>
+                      <i class="fa fa-list icon-muted"></i>
+                      <%= playlist.name.titleize %>
+                    <% end %>
+
+                  <% end %>
+                </div>
+
+              </section>
+
+        </section><!-- .col-xs -->
+      </section><!-- .row -->
+    </section>
+  </section>
+</section>
