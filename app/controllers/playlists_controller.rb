@@ -16,6 +16,7 @@ class PlaylistsController < ApplicationController
 
   def create
     @playlist = current_user.playlists.build(playlist_params)
+    @playlist = rand(2**41).to_s(20)
 
     if @playlist.save
       redirect_to playlists_path

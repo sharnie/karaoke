@@ -1,5 +1,6 @@
 class Playlist < ActiveRecord::Base
   validates_presence_of :name
+  validates_uniqueness_of :unique_id
   
   has_many :playlist_videos
   has_many :videos, through: :playlist_videos
