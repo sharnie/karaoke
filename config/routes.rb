@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'youtube#index'
+
+  resources :playlists do
+    resources :videos
+  end
+
+  get '/play/:playlist_id' => 'playlists#show'
 
   get  '/videos' => 'youtube#videos'
-  get  '/video'  => 'youtube#show'
 
+  root 'youtube#index'
 end

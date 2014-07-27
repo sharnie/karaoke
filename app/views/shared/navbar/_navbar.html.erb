@@ -1,18 +1,26 @@
-<header class="bg-black lter header header-md navbar navbar-fixed-top-xs">
-  <div class="navbar-header aside bg-info nav-xs">
+<header class="bg-primary lter header header-md navbar navbar-fixed-top-xs">
+  <div class="navbar-header aside dker nav-xs">
     <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
       <i class="icon-list"></i>
     </a>
     <%= link_to root_path, class: "navbar-brand text-lt" do %>
       <i class="icon-earphones"></i>
-      <img src="http://flatfull.com/themes/musik/images/a0.png" alt="." class="hide">
-      <span class="hidden-nav-xs m-l-sm">Musik</span>
+      <span class="hidden-nav-xs m-l-sm">Tun Up</span>
     <% end %>
     
     <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
       <i class="icon-settings"></i>
     </a>
   </div>
+
+  <ul class="nav navbar-nav hidden-xs">
+    <li>
+      <%= link_to playlists_path do %>
+        <i class="icon-playlist icon text-success-lter"></i>
+        <span class="font-bold">Playlists</span>
+      <% end %>
+    </li>
+  </ul>
 
   <div class="navbar-right ">
     <% if user_signed_in? %>

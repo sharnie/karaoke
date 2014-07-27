@@ -18,3 +18,4 @@
 //= require theme/slimscroll/jquery.slimscroll.min.js
 //= require theme/app.plugin
 //= require youtube
+//= require custom

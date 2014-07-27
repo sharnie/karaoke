@@ -1,28 +1,10 @@
-<!-- <h2>Sign in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
-
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %> -->
-
 <section id="content" class="m-t-lg wrapper-md animated fadeInUp">    
   <div class="container aside-xl">
-    <a class="navbar-brand block" href="index.html"><span class="h1 font-bold">Musik</span></a>
     <section class="m-b-lg">
       <header class="wrapper text-center">
         <strong>Sign in to get in touch</strong>
       </header>
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
           <%= f.email_field :email, class: "form-control rounded input-lg text-center no-border", placeholder: "Email" %>
