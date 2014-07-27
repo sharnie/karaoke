@@ -17,4 +17,6 @@
 //= require theme/app
 //= require theme/slimscroll/jquery.slimscroll.min.js
 //= require theme/app.plugin
+//= require swf/swfobject
+//= require action
 //= require youtube

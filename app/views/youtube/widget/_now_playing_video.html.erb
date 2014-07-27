@@ -1,12 +1,78 @@
 <div class="m-t-n-xxs item pos-rlt">
+
   <div id="now-playing" class="embed-responsive embed-responsive-16by9">
-
-    <object width="640" height="360">
-      <param name="movie" value="//www.youtube.com/v/<%= @youtube.videos.first.unique_id %>?hl=en_US&amp;version=3&amp;rel=0"></param>
-      <param name="allowFullScreen" value="true"></param>
-      <param name="allowscriptaccess" value="always"></param>
-      <embed src="//www.youtube.com/v/<%= @youtube.videos.first.unique_id %>?hl=en_US&amp;version=3&amp;rel=0" type="application/x-shockwave-flash" width="640" height="360" allowscriptaccess="always" allowfullscreen="true"></embed>
-    </object>
-
+    <div id="player"></div>
   </div>
+
+  <a href="#" id="playVideo">Play</a>
+  <a href="#" id="pauseVideo">Pause</a>
+  <a href="#" id="stopVideo">Stop</a>
+  <a href="#" id="btn-next">Next</a>
+
+<script>
+// var tag = document.createElement('script');
+// tag.src = "https://www.youtube.com/iframe_api";
+// var firstScriptTag = document.getElementsByTagName('script')[0];
+// firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+//   var player,
+//       playlist = [],
+//       currentVideo = 0;
+
+// function onYouTubeIframeAPIReady() {
+//     player = new YT.Player('player', {
+//         height: '300',
+//         width: '640',
+//         videoId: 'yoJsc3yuw8M',
+//         playerVars: {
+//           autoplay: 0,
+//           controls: 1,
+//         },
+//         events: {
+//           'onReady': onPlayerReady,
+//           'onStateChange': onPlayerStateChange
+//         }
+//     });
+// }
+
+// function addSongToPlaylist(video_id) {
+//   // response from server
+//   // response = ["PVi8bJFIac8", "AozrLAmFnxg", "KX7A43PixMs"];
+//   playlist.push(video_id);
+// }
+
+// function getVideoIndex(video_id) {
+//   currentVideo = $.inArray(video_id, playlist);
+// }
+
+// function onPlayerReady(player) {
+//   console.log('Player is ready.');
+// }
+
+// function onPlayerStateChange(newState) {
+//   if (newState.data === 0) {
+//     console.log('Video stopped, go to the next video.');
+//   }
+// }
+
+// $('#playVideo').click(function(ev){
+//   ev.preventDefault();
+//   player.playVideo();
+// });
+
+// $('#pauseVideo').click(function(ev){
+//   ev.preventDefault();
+//   player.pauseVideo();
+// });
+
+// $('#stopVideo').click(function(ev){
+//   ev.preventDefault();
+//   player.stopVideo();
+// });
+
+</script>
+
+
+
 </div>
+
