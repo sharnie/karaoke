@@ -2,10 +2,10 @@
   <section class="vbox">
     <section class="scrollable wrapper">
       <section class="row">
-        <section class="col-sm-offset-3 col-sm-6 col-md-6">
+        <section class="col-sm-offset-3 col-md-offset-3 col-lg-offset-4 col-sm-6 col-md-6 col-lg-4">
 
-              <section class="panel panel-default">
-                <header class="panel-heading bg-light no-border">
+              <section class="panel panel-default no-border">
+                <header class="panel-heading bg-white ">
                   <div class="clearfix">
                     <a href="#" class="pull-left thumb-md avatar b-3x m-r">
                       <%= image_tag avatar_url(current_user) %>
@@ -13,20 +13,21 @@
                     <div class="clear">
                       <div class="h3 m-t-xs m-b-xs">
                         <%= current_user.full_name %>
-                        <%= link_to "Create a new playlist", new_playlist_path, class: "btn btn-success pull-right" %>
+                        <%= link_to "New Playlist", new_playlist_path, class: "btn btn-primary pull-right" %>
                       </div>
                       <small class="text-muted">All Playlists</small>
                     </div>
                   </div>
                 </header>
 
-                <div class="list-group no-radius alt">
+                <div id="playlist-index" class="list-group no-radius alt">
                   <% @playlists.each do |playlist| %>
 
-                    <%= link_to playlist_path(playlist), class: "list-group-item" do %>
-                      <span class="badge bg-success"><%= playlist.videos.count %></span>
-                      <i class="fa fa-list icon-muted"></i>
-                      <%= playlist.name.titleize %>
+                    <%= link_to "/play/#{playlist.unique_id}", class: "list-group-item" do %>
+                      <span class="badge bg-primary"><%= playlist.videos.count %></span>
+
+                      <i class="icon-playlist icon text-success-lter text-muted"></i>
+                      <strong><%= playlist.name.titleize %></strong>
                     <% end %>
 
                   <% end %>

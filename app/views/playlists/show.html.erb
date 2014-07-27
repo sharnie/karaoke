@@ -6,7 +6,7 @@
         <!-- video and playlist // left -->
         <aside class="col-sm-7 no-padder" id="sidebar">
           <section class="vbox animated fadeInUp">
-              <section class="scrollable hover">
+              <section class="scrollable">
 
 
                 <div class="m-t-n-xxs item pos-rlt">
@@ -22,23 +22,28 @@
                   </div>
                 </div>
 
-                <ul id="playlist" class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+                <%= content_tag :ul, id: "playlist", class: "list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto", data: { :'playlist-id' => @playlist.unique_id } do %>
 
                   <% @playlist.videos.each do |video| %>
                     <%= content_tag :li, class: "list-group-item playlist-video", data: { id: video.unique_id } do %>
-                      <div class="pull-right m-l">
-                        <a href="#" class="remove-icon"><i class="icon-close"></i></a>
-                      </div>
+
+                      <% if current_user_content? %>
+                        <div class="pull-right m-l">
+                          <a href="#" class="remove-icon"><i class="icon-close btn-add-remove"></i></a>
+                        </div>
+                      <% end %>
+
                       <span href="#" class="jp-play-me m-r-sm pull-left">
                         <%= image_tag video.image_url, class: "thumb-xs" %>
                       </span>
+
                       <div class="clear text-ellipsis">
                         <span><%= video.name.titleize %></span>
                       </div>
                     <% end %>
-                  <% end %>
 
-                </ul>
+                  <% end %>
+                <% end %>
 
 
               </section><!-- scrollable -->
@@ -48,7 +53,7 @@
         <!-- search-result // middle -->
         <section class="col-sm-3 no-padder bg">
           <section class="vbox">
-            <section class="scrollable hover">
+            <section class="scrollable">
               <ul id="search-results" class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
 
                 <div class="list-group-item clearfix">
@@ -65,6 +70,7 @@
                 </div>
 
                 <!-- search results -->
+                <li class="list-group-item">Search for videos now.</li>
 
 
               </ul>
@@ -73,6 +79,7 @@
         </section>
 
         <!-- adsense // right -->
+        <%= render 'youtube/widget/adsense' %>
         
       </section>
     </section>

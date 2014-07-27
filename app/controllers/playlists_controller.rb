@@ -1,13 +1,20 @@
 class PlaylistsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:show]
 
   def index
-    @playlists = Playlist.all_recent
+    @playlists = current_user.playlists.all_recent
   end
 
   def show
-    @playlist = Playlist.find(params[:id])
+    playlist = Playlist.find_by(unique_id: params[:playlist_id])
+
+    if playlist.nil?
+      flash[:error] = "Playlist does not exists."
+      redirect_to root_path
+    else
+      @playlist = playlist
+    end
   end
 
   def new
@@ -15,14 +22,19 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = current_user.playlists.build(playlist_params)
-    @playlist = rand(2**41).to_s(20)
+    @playlist           = current_user.playlists.build(playlist_params)
+    @playlist.unique_id = rand(2**41).to_s(20)
 
     if @playlist.save
       redirect_to playlists_path
     else
       redirect_to new_playlist_path
     end
+  end
+
+  def destroy
+    @playlist.destroy
+    redirect_to playlists_path
   end
 
 private
@@ -32,6 +44,6 @@ private
 
   def correct_user
     @playlist = current_user.playlists.find_by(id: params[:id]) if user_signed_in?
-    redirect_to root_path if @playlist.nil?
+    redirect_to root_path, notice: "Not authorized to edit this playlist" if @playlist.nil?
   end
 end

@@ -6,6 +6,6 @@ class Playlist < ActiveRecord::Base
   has_many :videos, through: :playlist_videos
 
   def self.all_recent
-    Playlist.all.order('created_at DESC')
+    all.order('created_at DESC')
   end
 end

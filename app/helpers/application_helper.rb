@@ -41,4 +41,8 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def current_user_content?
+    user_signed_in? && current_user.id == @playlist.user_id
+  end
+
 end

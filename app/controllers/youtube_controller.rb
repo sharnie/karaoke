@@ -10,13 +10,7 @@ class YoutubeController < ApplicationController
     respond_with search_videos(params[:q])
   end
 
-  def show
-    video  = params[:watch] || "FQK1URcxmb4"
-    @video = yt_client.video_by(video)
-  end
-
 private
-
   def search_videos query
     yt_client.videos_by(query: "#{query} lyrics")
   end

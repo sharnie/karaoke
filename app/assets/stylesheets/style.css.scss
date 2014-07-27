@@ -1,13 +1,29 @@
 .vbox {
   display: block !important;
 }
+
+// alert
 .alert {
-  margin-bottom: 0px;
+  margin-bottom: 15px;
   border-radius: 0px;
+  border: none;
 }
-#search-results .added-to-list, #search-results .added-to-list:hover {
-  background-color: #2C3942 !important;
-  color: #fff;
+
+// background helper
+.bg-white {
+  background-color: #fff !important;
+}
+
+// button
+.btn-add-remove {
+  font-size: 20px;
+}
+
+// search
+#search-results .added-to-list, #search-results .added-to-list:hover, #search-results .added-to-list .btn-add-remove, #search-results .added-to-list small.text-muted {
+  background-color: #108D4E !important;
+  font-weight: 700;
+  color: #fff !important;
 }
 #search-results .list-group-item {
   border-radius: 0px !important;
