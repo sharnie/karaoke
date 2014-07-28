@@ -12,10 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
 //= require theme/app
 //= require theme/slimscroll/jquery.slimscroll.min.js
 //= require theme/app.plugin
 //= require youtube
-//= require custom
+//= require playlist
