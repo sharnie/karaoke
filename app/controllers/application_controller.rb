@@ -10,16 +10,23 @@ class ApplicationController < ActionController::Base
     @yt_client ||= YouTubeIt::Client.new(:dev_key => ENV['YOUTUBE_DEVELOPER_KEY'])
   end
 
-private
-
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for resource_or_scope
     new_user_session_path
   end
 
+  def after_sign_in_path_for(resource)
+    if current_user.zip_code.blank? || current_user.full_name.blank?
+      flash[:notice] = "Please update account information before continuing."
+      edit_user_registration_path
+    else
+      root_path
+    end
+  end
+
+private
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up)        << [:full_name]
     devise_parameter_sanitizer.for(:account_update) << [:full_name]
   end
-
 end
