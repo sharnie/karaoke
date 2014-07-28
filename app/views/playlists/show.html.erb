@@ -40,31 +40,7 @@
         </aside>
 
         <!-- search-result // middle -->
-        <section class="col-sm-3 no-padder bg hidden-xs">
-          <section class="vbox">
-            <section class="scrollable">
-              <ul id="search-results" class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
-
-                <div class="list-group-item clearfix">
-                  <!-- search form -->
-                  <form method="get" action="/" class="m-l-n-xs hidden-xs" id="video-search-form" role="search">
-                    <div class="input-group">
-                      <span class="input-group-btn">
-                        <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
-                      </span>
-                      <input type="text" id="video-query" name="q" class="form-control input-sm no-border rounded" placeholder="Search songs, albums..." autocomplete="off">
-                    </div>
-                  </form>
-
-                </div>
-
-                <!-- search results -->
-                <li class="list-group-item">Search for videos now.</li>
-
-              </ul>
-            </section>
-          </section>
-        </section>
+        <%= render 'playlists/widget/search_result' %>
 
         <!-- adsense // right -->
         <%= render 'playlists/widget/adsense' %>

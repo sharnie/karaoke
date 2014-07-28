@@ -1,4 +1,4 @@
-<header class="bg-primary lter header header-md navbar navbar-fixed-top-xs">
+<header class="<%= karaoke? ? "bg-black " : "bg-primary " %>lter header header-md navbar navbar-fixed-top-xs">
   <div class="navbar-header aside dker nav-xs">
     <%= link_to playlists_path, class: "btn btn-link visible-xs" do %>
       <i class="icon-playlist icon"></i>
@@ -15,12 +15,19 @@
   </div>
 
   <ul class="nav navbar-nav hidden-xs">
-    <li>
+    <%= nav_link(root_path) do %>
+      <%= link_to root_path do %>
+        <i class="icon-microphone icon text-info"></i>
+        <span class="font-bold">Karaoke Mode</span>
+      <% end %>
+    <% end %>
+
+    <%= nav_link(playlists_path) do %>
       <%= link_to playlists_path do %>
         <i class="icon-playlist icon text-success-lter"></i>
-        <span class="font-bold">Playlists</span>
+        <span class="font-bold">My Playlists</span>
       <% end %>
-    </li>
+    <% end %>
   </ul>
 
   <div class="navbar-right ">

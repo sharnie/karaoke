@@ -7,13 +7,14 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    playlist = Playlist.find_by(unique_id: params[:playlist_id])
+    playlist = Playlist.find_by(unique_id: params[:id])
 
     if playlist.nil?
       flash[:error] = "Playlist does not exists."
       redirect_to root_path
     else
       @playlist = playlist
+      @related  = yt_client.video_by("#{playlist.videos.first.unique_id}").related.videos
     end
   end
 

@@ -5,8 +5,6 @@ Rails.application.routes.draw do
     resources :videos
   end
 
-  get '/play/:playlist_id' => 'playlists#show'
-
   get  '/videos' => 'youtube#videos'
 
   root 'youtube#index'

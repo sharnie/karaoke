@@ -2,7 +2,7 @@ class YoutubeController < ApplicationController
   respond_to :json
 
   def index
-    search_query = params[:q] || "top music 2014 lyrics"
+    search_query = params[:q] || "karaoke"
     @youtube     = search_videos(search_query)
   end
 

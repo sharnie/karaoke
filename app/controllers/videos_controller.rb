@@ -3,12 +3,12 @@ class VideosController < ApplicationController
 
   def create
     @playlist.videos << Video.create(video_params)
-    render nothing: true, status: 200, content_type: 'text/html'
+    render nothing: true, status: 200
   end
 
   def destroy
     @playlist.videos.find_by(unique_id: params[:id]).destroy
-    render nothing: true, status: 200, content_type: 'text/html'
+    render nothing: true, status: 200
   end
 
 private

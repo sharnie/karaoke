@@ -181,7 +181,8 @@ search_results.on('click', '.result-item', function(ev){
       video_name  = video_li.find('.playlist-video-title').html(),
       video_thumb = video_li.find('.playlist-video-image').attr('src');
 
-      console.log('Go');
+      video_li.addClass('added-to-list');
+
   PlayList.addVideoToPlaylist(video_li, video_name, video_thumb, video_id);
 });
 

@@ -8,13 +8,23 @@ module ApplicationHelper
     end
   end
 
-  def exclude_nav?
-    black_list = [new_user_registration_path,
-                  edit_user_registration_path,
-                  new_user_session_path]
+  def karaoke?
+    current_page?(root_path)
+  end
 
-    black_list.any? do |url|
+  def playlist?
+    white_list = [playlists_path]
+
+    white_list.any? do |url|
       current_page?(url)
+    end
+  end
+
+  def nav_link link_path
+    class_name = current_page?(link_path) ? 'active ' : ''
+
+    content_tag(:li, :class => class_name) do
+      yield
     end
   end
 

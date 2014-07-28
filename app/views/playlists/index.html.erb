@@ -23,7 +23,7 @@
                 <div id="playlist-index" class="list-group no-radius alt">
                   <% @playlists.each do |playlist| %>
 
-                    <%= link_to "/play/#{playlist.unique_id}", class: "list-group-item" do %>
+                    <%= link_to playlist_path(playlist.unique_id), class: "list-group-item" do %>
                       <span class="badge bg-primary"><%= playlist.videos.count %></span>
 
                       <i class="icon-playlist icon text-success-lter text-muted"></i>
