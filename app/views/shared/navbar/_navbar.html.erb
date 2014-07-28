@@ -22,7 +22,7 @@
       <% end %>
     <% end %>
 
-    <%= nav_link(playlists_path) do %>
+    <%= nav_link(params[:id] ? playlist_path : playlists_path) do %>
       <%= link_to playlists_path do %>
         <i class="icon-playlist icon text-success-lter"></i>
         <span class="font-bold">My Playlists</span>
