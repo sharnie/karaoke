@@ -17,7 +17,7 @@
         </div>
 
         <!-- search results -->
-        <% @related.take(15).each do |video| %>
+        <% @related.each do |video| %>
           <%= content_tag :li, class: "list-group-item clearfix result-item", data: { id: video.unique_id } do %>
             <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md add-to-playlist">
               <i class="fa fa-plus-circle text "></i>
