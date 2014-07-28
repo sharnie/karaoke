@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+</head>
+<body>
+
+<ul id="nowplaying"></ul>
+<div id="player"></div>
+<a href="#" id="nextbutton">Next</a>
+<a href="#" id="addsong">Add Song</a>
+  <a href="#" id="playVideo">Play</a>
+  <a href="#" id="pauseVideo">Pause</a>
+  <a href="#" id="stopVideo">Stop</a>
+<script src="/assets/jquery.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+
+  var player,
+      playlist,
+      currentVideo;
+
+  function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+          height: '300',
+          width: '640',
+          videoId: 'yoJsc3yuw8M',
+          playerVars: {
+            autoplay: 0,
+            controls: 1,
+            iv_load_policy: 3,
+            allowfullscreen: 1,
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+      });
+  }
+
+  currentVideo = 0;
+  playlist = ["PVi8bJFIac8", "AozrLAmFnxg", "KX7A43PixMs"];
+
+  function onPlayerReady(player) {
+    console.log(player.target);
+  }
+
+  function onPlayerStateChange(newState) {
+    if (newState.data === 0) {
+
+    }
+  }
+
+  function getVideoIndex(video_id) {
+    currentVideo = $.inArray(video_id, playlist);
+  }
+
+$('#playVideo').click(function(ev){
+  ev.preventDefault();
+  player.playVideo();
+});
+
+$('#pauseVideo').click(function(ev){
+  ev.preventDefault();
+  player.pauseVideo();
+});
+
+$('#stopVideo').click(function(ev){
+  ev.preventDefault();
+  player.stopVideo();
+});
+
+$('#nextbutton').click(function(ev){
+  ev.preventDefault();
+  player.loadVideoById(playlist[0], 5);
+  // nextVideo();
+});
+
+
+  // (function videoCue() {
+  //   $.each(playlist, function(index, video){
+  //     $("#nowplaying").append('<li data-id="'+index+'" class="song-title">'+ video +'</li>');
+  //   });
+  // })();
+
+  // function getVideoIndex(array_element) {
+  //   currentVideo = $.inArray(array_element, playlist);
+  // }
+
+  // function nextVideo() {
+  //   currentVideo++;
+
+  //   if(playlist[currentVideo] !== undefined) {
+  //     console.log(playlist[currentVideo]);
+  //   }
+  // }
+
+  // function addSong() {
+  //   playlist.push("Song Added");
+  // }
+
+  // $('#nowplaying').on('click', '.song-title', function(ev){
+  //   ev.preventDefault();
+  //   var element = $(this).html();
+  //   getVideoIndex(element);
+  // });
+
+  // $('#nextbutton').click(function(ev){
+  //   ev.preventDefault();
+  //   nextVideo();
+  // });
+
+  // $('#addsong').click(function(ev){
+  //   ev.preventDefault();
+  //   addSong();
+  // });
+
+
+</script>
+
+  
+</body>
+</html>

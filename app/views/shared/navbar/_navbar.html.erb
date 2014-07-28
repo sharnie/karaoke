@@ -1,8 +1,8 @@
 <header class="bg-primary lter header header-md navbar navbar-fixed-top-xs">
   <div class="navbar-header aside dker nav-xs">
-    <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
-      <i class="icon-list"></i>
-    </a>
+    <%= link_to playlists_path, class: "btn btn-link visible-xs" do %>
+      <i class="icon-playlist icon"></i>
+    <% end %>
     <%= link_to root_path, class: "navbar-brand text-lt" do %>
       <i class="icon-earphones"></i>
       <span class="hidden-nav-xs m-l-sm">Tun Up</span>
