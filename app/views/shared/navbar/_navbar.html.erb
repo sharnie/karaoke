@@ -3,6 +3,7 @@
     <%= link_to playlists_path, class: "btn btn-link visible-xs" do %>
       <i class="icon-playlist icon"></i>
     <% end %>
+    
     <%= link_to root_path, class: "navbar-brand text-lt" do %>
       <i class="icon-earphones"></i>
       <span class="hidden-nav-xs m-l-sm">Tun Up</span>
@@ -28,6 +29,5 @@
     <% else %>
       <%= render 'shared/navbar/navbar_guest' %>
     <% end %>
-  </div>  
-
+  </div>
 </header>

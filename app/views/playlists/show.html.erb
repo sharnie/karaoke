@@ -8,7 +8,7 @@
               <section class="scrollable">
 
 
-                <%= render 'youtube/widget/now_playing_video' %>
+                <%= render 'playlists/widget/now_playing_video' %>
 
                 <%= content_tag :ul, id: "playlist", class: "list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto", data: { :'playlist-id' => @playlist.unique_id } do %>
 
@@ -67,7 +67,7 @@
         </section>
 
         <!-- adsense // right -->
-        <%= render 'youtube/widget/adsense' %>
+        <%= render 'playlists/widget/adsense' %>
         
       </section>
 

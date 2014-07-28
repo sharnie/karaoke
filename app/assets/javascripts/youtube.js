@@ -10,6 +10,12 @@ var player,
 
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
+    playerVars: {
+      iv_load_policy: 3,
+      controls: 0,
+      enablejsapi: 1,
+      rel: 0,
+    },
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
