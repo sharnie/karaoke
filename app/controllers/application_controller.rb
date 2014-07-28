@@ -15,15 +15,6 @@ class ApplicationController < ActionController::Base
     new_user_session_path
   end
 
-  def after_sign_in_path_for(resource)
-    if current_user.zip_code.blank? || current_user.full_name.blank?
-      flash[:notice] = "Please update account information before continuing."
-      edit_user_registration_path
-    else
-      root_path
-    end
-  end
-
 private
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up)        << [:full_name]
