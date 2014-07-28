@@ -14,7 +14,9 @@ class PlaylistsController < ApplicationController
       redirect_to root_path
     else
       @playlist = playlist
-      @related  = yt_client.video_by("#{playlist.videos.first.unique_id}").related.videos
+
+      query = playlist.videos.empty? ? "K5fOYZcv_0U" : playlist.videos.first.unique_id
+      @related  = yt_client.video_by(query).related.videos
     end
   end
 
