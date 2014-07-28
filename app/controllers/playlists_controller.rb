@@ -15,8 +15,8 @@ class PlaylistsController < ApplicationController
     else
       @playlist = playlist
 
-      query = playlist.videos.empty? ? "K5fOYZcv_0U" : playlist.videos.first.unique_id
-      @related  = yt_client.video_by(query).related.videos
+      # query = playlist.videos.empty? ? "K5fOYZcv_0U" : playlist.videos.first.unique_id
+      @related  = yt_client.videos_by(query: "#{playlist.name} lyrics").videos
     end
   end
 
