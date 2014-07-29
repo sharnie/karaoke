@@ -16,10 +16,13 @@ class PlaylistsController < ApplicationController
       @playlist = playlist
 
       if playlist.videos.empty?
-        @related  = yt_client.videos_by(query: "#{playlist.name} lyrics").videos
+        @related = yt_client.videos_by(query: "#{playlist.name} lyrics").videos.reject do |video|
+          video.noembed == true
+        end
       else
-        # query = playlist.videos.empty? ? "K5fOYZcv_0U" : playlist.videos.first.unique_id
-        @related  = yt_client.video_by(playlist.videos.first.unique_id).related.videos
+        @related = yt_client.video_by(playlist.videos.first.unique_id).related.videos.reject do |video|
+          video.noembed == true
+        end
       end
     end
   end

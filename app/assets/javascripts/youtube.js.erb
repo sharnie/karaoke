@@ -23,35 +23,38 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerReady(ev) {
+
   // play the first video on playlist
   if ($('.playlist-video').length !== 0) {
     currentVideo = $('.playlist-video').first();
+
     PlayList.highlightCurrentSong();
     ev.target.loadVideoById(currentVideo.data('id'));
   }
+
 }
 
 function onPlayerStateChange(event) {
+
   // play next video if player stopped
   if (event.data === YT.PlayerState.ENDED) {
-
     currentVideo = currentVideo.next();
-    PlayList.highlightCurrentSong();
 
+    PlayList.highlightCurrentSong();
     player.loadVideoById(currentVideo.data('id'));
 
   }
+
 }
 
 
 PlayList = {
 
   changeVideo: function(video_li) {
-    var video_id = video_li.data('id');
-
+    var video_id     = video_li.data('id');
         currentVideo = video_li;
-        PlayList.highlightCurrentSong();
 
+    PlayList.highlightCurrentSong();
     player.loadVideoById(video_id);
 
   },
@@ -138,19 +141,20 @@ PlayList = {
   highlightCurrentSong: function() {
     $.each(playlist_video_li, function(index, element){
 
-      if($(element).hasClass('now-playing')){
+      if($(element).hasClass('now-playing')) {
         $(element).removeClass('now-playing');
       }
 
     });
 
     currentVideo.addClass('now-playing');
-  }
+  },
 
 } // PlayList
 
 // video search form
-var video_search_form = $('#video-search-form'), query;
+var video_search_form = $('#video-search-form'),
+    query;
 
 video_search_form.on('submit', function(ev){
   ev.preventDefault();

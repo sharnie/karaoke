@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require youtube
 //= require bootstrap
 //= require theme/app
 //= require theme/slimscroll/jquery.slimscroll.min.js
 //= require theme/app.plugin
+//= require youtube
 //= require widgetapi
